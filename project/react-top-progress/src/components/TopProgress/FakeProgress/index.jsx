@@ -10,7 +10,7 @@ const ScrollProgress = ({
   containerStyles,
   onComplete,
   isUnicorn,
-  pauseUntillIsFinished,
+  pauseUntillComplete,
 }) => {
   let [progress, setProgress] = useState(0);
 
@@ -36,7 +36,7 @@ const ScrollProgress = ({
     const increaseProgress = () => {
       counter += progress > 80 ? 15 : 0.5;
       setProgress((progress += progress > 60 ? 0.5 : 1));
-      if (progress >= 90 && pauseUntillIsFinished) return;
+      if (progress >= 90 && pauseUntillComplete) return;
       if (progress >= 100) {
         callOnComplete();
         return;

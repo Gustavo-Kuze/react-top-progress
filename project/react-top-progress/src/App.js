@@ -16,7 +16,7 @@ function App() {
             isComplete={isFinished}
             onComplete={() => console.log('completado')}
             isUnicorn={isUnicorn}
-            pauseUntillIsFinished
+            pauseUntillComplete
           />
         ) : (
           <ScrollProgress
