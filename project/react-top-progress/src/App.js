@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TopProgress, {
@@ -7,22 +7,23 @@ import TopProgress, {
 } from './components/TopProgress';
 
 function App() {
+  const [isFinished, setIsFinished] = useState(false);
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <FakeProgress progress={80.3} />
+        <FakeProgress progress={80.3} isComplete={isFinished} />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <button
+          onClick={() => {
+            setIsFinished(true);
+          }}
         >
-          Learn React
-        </a>
+          Finalizar
+        </button>
       </header>
     </div>
   );
