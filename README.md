@@ -30,3 +30,7 @@ Após o import, você pode utilizar os componentes dessa forma:
 | isComplete | false | boolean | Caso seja passada com valor true, esse Boolean fará com que a barra tenha seu valor setado para 100% e chamará a função de callback onComplete|
 | onComplete | undefined | function | Função de callback que será chamada assim que a barra tiver seu progresso maior ou igual a 100 |
 | pauseUntillComplete | false | boolean | Boolean que define se o progresso deve ser pausado assim que chegar em 90% |
+
+
+# Demonstração
+Para ver essa lib em ação, acesse a [demo](https://jolly-villani-501550.netlify.com/)
