@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import TopProgress, {
-  ScrollProgress,
-  FakeProgress,
-} from './components/TopProgress';
+import { ScrollProgress, FakeProgress } from './components/TopProgress';
 
 function App() {
   const [isFinished, setIsFinished] = useState(false);
@@ -16,13 +13,14 @@ function App() {
         {isFake ? (
           <FakeProgress
             isComplete={isFinished}
-            containerStyles={{ backgroundColor: 'black' }}
             onComplete={() => console.log('completado')}
+            isUnicorn
           />
         ) : (
           <ScrollProgress
             containerStyles={{ backgroundColor: '#444' }}
             progressLevelStyles={{ backgroundColor: 'orange' }}
+            isUnicorn
           />
         )}
 
@@ -50,6 +48,7 @@ function App() {
           </label>
         </div>
         <button
+          type="button"
           onClick={() => {
             setIsFinished(true);
           }}

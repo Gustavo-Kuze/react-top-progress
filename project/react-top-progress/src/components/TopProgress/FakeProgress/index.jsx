@@ -8,6 +8,7 @@ const ScrollProgress = ({
   progressLevelStyles,
   containerStyles,
   onComplete,
+  isUnicorn,
 }) => {
   // eslint-disable-next-line prefer-const
   let [progress, setProgress] = useState(0);
@@ -48,6 +49,7 @@ const ScrollProgress = ({
       progress={progress}
       progressLevelStyles={progressLevelStyles}
       containerStyles={containerStyles}
+      isUnicorn={isUnicorn}
     />
   );
 };
