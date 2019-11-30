@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TopProgress, {
   ScrollProgress,
@@ -8,15 +7,37 @@ import TopProgress, {
 
 function App() {
   const [isFinished, setIsFinished] = useState(false);
+  const [isFake, setIsFake] = useState(false);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <FakeProgress progress={80.3} isComplete={isFinished} />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>ReactTopProgress</h1>
+        {isFake ? <FakeProgress isComplete={isFinished} /> : <ScrollProgress />}
 
+        <div style={{ margin: '15px' }}>
+          <label htmlFor="fake">
+            <input
+              id="fake"
+              type="radio"
+              checked={isFake}
+              onClick={() => setIsFake(true)}
+            />
+            FakeProgress
+          </label>
+          <label htmlFor="scroll">
+            <input
+              id="scroll"
+              type="radio"
+              checked={!isFake}
+              onClick={() => {
+                setIsFake(false);
+                setIsFinished(false);
+              }}
+            />
+            ScrollProgress
+          </label>
+        </div>
         <button
           onClick={() => {
             setIsFinished(true);
