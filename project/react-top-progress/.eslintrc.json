@@ -11,7 +11,8 @@
     ],
     "prettier/prettier": "error",
     "max-len": ["error", 80],
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "react/jsx-props-no-spreading": "off"
   },
   "env": {
     "browser": true

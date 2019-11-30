@@ -3,7 +3,11 @@ import ProgressBar from '../ProgressBar';
 
 let timeOut = null;
 
-const ScrollProgress = ({ isComplete }) => {
+const ScrollProgress = ({
+  isComplete,
+  progressLevelStyles,
+  containerStyles,
+}) => {
   // eslint-disable-next-line prefer-const
   let [progress, setProgress] = useState(0);
 
@@ -28,7 +32,13 @@ const ScrollProgress = ({ isComplete }) => {
     timeOut = setTimeout(increaseProgress, counter);
   }, []);
 
-  return <ProgressBar progress={progress} />;
+  return (
+    <ProgressBar
+      progress={progress}
+      progressLevelStyles={progressLevelStyles}
+      containerStyles={containerStyles}
+    />
+  );
 };
 
 export default ScrollProgress;

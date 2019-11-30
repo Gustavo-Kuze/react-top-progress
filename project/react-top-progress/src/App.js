@@ -13,7 +13,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>ReactTopProgress</h1>
-        {isFake ? <FakeProgress isComplete={isFinished} /> : <ScrollProgress />}
+        {isFake ? (
+          <FakeProgress
+            isComplete={isFinished}
+            containerStyles={{ backgroundColor: 'black' }}
+          />
+        ) : (
+          <ScrollProgress />
+        )}
 
         <div style={{ margin: '15px' }}>
           <label htmlFor="fake">

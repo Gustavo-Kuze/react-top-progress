@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProgressBar from '../ProgressBar';
 
-const ScrollProgress = () => {
+const ScrollProgress = ({ progressLevelStyles, containerStyles }) => {
   const getScrollPercentage = () => {
     const scrollLength = document.body.scrollHeight - window.innerHeight;
     return (window.pageYOffset / scrollLength) * 100;
@@ -18,7 +18,13 @@ const ScrollProgress = () => {
     window.addEventListener('scroll', handleWindowScroll);
   }, []);
 
-  return <ProgressBar progress={progress} />;
+  return (
+    <ProgressBar
+      progress={progress}
+      progressLevelStyles={progressLevelStyles}
+      containerStyles={containerStyles}
+    />
+  );
 };
 
 export default ScrollProgress;
