@@ -1,14 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import TopProgress, { ScrollProgress } from './components/TopProgress';
+import TopProgress, {
+  ScrollProgress,
+  FakeProgress,
+} from './components/TopProgress';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <ScrollProgress progress={80.3} />
+        <FakeProgress progress={80.3} />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
