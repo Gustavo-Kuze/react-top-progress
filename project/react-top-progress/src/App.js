@@ -17,9 +17,13 @@ function App() {
           <FakeProgress
             isComplete={isFinished}
             containerStyles={{ backgroundColor: 'black' }}
+            onComplete={() => console.log('completado')}
           />
         ) : (
-          <ScrollProgress />
+          <ScrollProgress
+            containerStyles={{ backgroundColor: '#444' }}
+            progressLevelStyles={{ backgroundColor: 'orange' }}
+          />
         )}
 
         <div style={{ margin: '15px' }}>

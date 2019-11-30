@@ -7,9 +7,16 @@ const ScrollProgress = ({
   isComplete,
   progressLevelStyles,
   containerStyles,
+  onComplete,
 }) => {
   // eslint-disable-next-line prefer-const
   let [progress, setProgress] = useState(0);
+
+  const callOnComplete = () => {
+    if (onComplete && typeof onComplete === 'function') {
+      onComplete();
+    }
+  };
 
   useEffect(() => {
     clearTimeout(timeOut);
@@ -18,6 +25,7 @@ const ScrollProgress = ({
       setTimeout(() => {
         clearTimeout(timeOut);
       }, 200);
+      callOnComplete();
     }
   }, [isComplete]);
 
@@ -26,7 +34,10 @@ const ScrollProgress = ({
     const increaseProgress = () => {
       counter += progress > 80 ? 15 : 0.5;
       setProgress((progress += progress > 60 ? 0.5 : 1));
-      if (progress >= 100) return;
+      if (progress >= 100) {
+        callOnComplete();
+        return;
+      }
       timeOut = setTimeout(increaseProgress, counter);
     };
     timeOut = setTimeout(increaseProgress, counter);
