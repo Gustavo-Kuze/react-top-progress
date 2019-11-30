@@ -5,6 +5,7 @@ import { ScrollProgress, FakeProgress } from './components/TopProgress';
 function App() {
   const [isFinished, setIsFinished] = useState(false);
   const [isFake, setIsFake] = useState(false);
+  const [isUnicorn, setIsUnicorn] = useState(false);
 
   return (
     <div className="App">
@@ -14,16 +15,26 @@ function App() {
           <FakeProgress
             isComplete={isFinished}
             onComplete={() => console.log('completado')}
-            isUnicorn
+            isUnicorn={isUnicorn}
+            pauseUntillIsFinished
           />
         ) : (
           <ScrollProgress
             containerStyles={{ backgroundColor: '#444' }}
             progressLevelStyles={{ backgroundColor: 'orange' }}
-            isUnicorn
+            isUnicorn={isUnicorn}
           />
         )}
 
+        <label htmlFor="unicorn">
+          <input
+            id="unicorn"
+            type="checkbox"
+            checked={isUnicorn}
+            onChange={e => setIsUnicorn(e.target.checked)}
+          />
+          Arco-íris
+        </label>
         <div style={{ margin: '15px' }}>
           <label htmlFor="fake">
             <input

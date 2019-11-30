@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 import React, { useState, useEffect } from 'react';
 import ProgressBar from '../ProgressBar';
 
@@ -9,8 +10,8 @@ const ScrollProgress = ({
   containerStyles,
   onComplete,
   isUnicorn,
+  pauseUntillIsFinished,
 }) => {
-  // eslint-disable-next-line prefer-const
   let [progress, setProgress] = useState(0);
 
   const callOnComplete = () => {
@@ -35,6 +36,7 @@ const ScrollProgress = ({
     const increaseProgress = () => {
       counter += progress > 80 ? 15 : 0.5;
       setProgress((progress += progress > 60 ? 0.5 : 1));
+      if (progress >= 90 && pauseUntillIsFinished) return;
       if (progress >= 100) {
         callOnComplete();
         return;
@@ -42,6 +44,7 @@ const ScrollProgress = ({
       timeOut = setTimeout(increaseProgress, counter);
     };
     timeOut = setTimeout(increaseProgress, counter);
+    return () => clearTimeout(timeOut);
   }, []);
 
   return (
