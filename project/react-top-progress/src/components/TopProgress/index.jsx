@@ -1,19 +1,6 @@
-import './styles.css';
-import React from 'react';
+import ProgressBar from './ProgressBar';
+import ScrollProgress from './ScrollProgress';
 
-const TopProgress = ({
-  containerStyles,
-  progressLevelStyles,
-  progress = 0,
-}) => {
-  return (
-    <div className="progress-container" style={containerStyles}>
-      <div
-        className="progress-level"
-        style={{ ...progressLevelStyles, width: `${progress}%` }}
-      />
-    </div>
-  );
-};
+export default ProgressBar;
 
-export default TopProgress;
+export { ScrollProgress };
