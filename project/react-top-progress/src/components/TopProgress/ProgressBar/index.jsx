@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-bitwise */
 import './styles.css';
 import React, { useEffect, useState } from 'react';
@@ -7,6 +8,7 @@ const ProgressBar = ({
   progressLevelStyles,
   progress = 0,
   isRainbow,
+  smooth,
 }) => {
   const [color1, setColor1] = useState();
   const [color2, setColor2] = useState();
@@ -37,6 +39,7 @@ const ProgressBar = ({
           ...progressLevelStyles,
           width: `${progress}%`,
           background: `linear-gradient(to right, ${color1}, ${color2}, ${color3}, ${color4}, ${color5})`,
+          transition: smooth ? 'all 400ms ease-out' : '',
         }}
       />
     </div>

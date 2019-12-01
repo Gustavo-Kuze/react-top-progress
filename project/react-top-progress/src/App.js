@@ -17,6 +17,7 @@ function App() {
             onComplete={() => console.log('completado')}
             isRainbow={isRainbow}
             pauseUntillComplete
+            smooth
           />
         ) : (
           <ScrollProgress

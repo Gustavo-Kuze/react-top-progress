@@ -5,6 +5,7 @@ const ScrollProgress = ({
   progressLevelStyles,
   containerStyles,
   isRainbow,
+  smooth,
 }) => {
   const getScrollPercentage = () => {
     const scrollLength = document.body.scrollHeight - window.innerHeight;
@@ -28,6 +29,7 @@ const ScrollProgress = ({
       progressLevelStyles={progressLevelStyles}
       containerStyles={containerStyles}
       isRainbow={isRainbow}
+      smooth={smooth}
     />
   );
 };
