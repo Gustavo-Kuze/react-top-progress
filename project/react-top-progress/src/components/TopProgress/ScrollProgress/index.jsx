@@ -7,6 +7,7 @@ const ScrollProgress = ({
   isGradient,
   smooth,
   gradientColors,
+  animateGradient,
 }) => {
   const getScrollPercentage = () => {
     const scrollLength = document.body.scrollHeight - window.innerHeight;
@@ -32,6 +33,7 @@ const ScrollProgress = ({
       isGradient={isGradient}
       smooth={smooth}
       gradientColors={gradientColors}
+      animateGradient={animateGradient}
     />
   );
 };

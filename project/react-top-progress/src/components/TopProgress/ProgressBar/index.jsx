@@ -10,6 +10,7 @@ const ProgressBar = ({
   isGradient,
   smooth,
   gradientColors = ['red', 'yellow', 'green', 'blue', 'purple'],
+  animateGradient = true,
 }) => {
   const [color1, setColor1] = useState();
   const [color2, setColor2] = useState();
@@ -19,16 +20,22 @@ const ProgressBar = ({
 
   let colors = gradientColors;
 
+  const setColors = () => {
+    setColor1(colors[0]);
+    setColor2(colors[1]);
+    setColor3(colors[2]);
+    setColor4(colors[3]);
+    setColor5(colors[4]);
+  };
+
   useEffect(() => {
-    if (isGradient) {
+    if (isGradient && animateGradient) {
       setInterval(() => {
         colors = [colors.pop(), ...colors];
-        setColor1(colors[0]);
-        setColor2(colors[1]);
-        setColor3(colors[2]);
-        setColor4(colors[3]);
-        setColor5(colors[4]);
+        setColors();
       }, 80);
+    } else {
+      setColors();
     }
   }, [isGradient]);
 

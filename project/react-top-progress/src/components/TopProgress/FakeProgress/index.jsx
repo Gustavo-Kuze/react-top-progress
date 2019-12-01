@@ -13,6 +13,7 @@ const ScrollProgress = ({
   pauseUntillComplete,
   smooth,
   gradientColors,
+  animateGradient,
 }) => {
   let [progress, setProgress] = useState(0);
 
@@ -57,6 +58,7 @@ const ScrollProgress = ({
       isGradient={isGradient}
       smooth={smooth}
       gradientColors={gradientColors}
+      animateGradient={animateGradient}
     />
   );
 };
