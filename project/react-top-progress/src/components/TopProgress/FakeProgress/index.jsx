@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import ProgressBar from '../ProgressBar';
 
-let timeOut = null;
+let progressTimeout = null;
+let callbackTimeout = null;
 
 const ScrollProgress = ({
   isComplete,
@@ -24,14 +25,15 @@ const ScrollProgress = ({
   };
 
   useEffect(() => {
-    clearTimeout(timeOut);
-    setProgress(100);
+    clearTimeout(progressTimeout);
     if (isComplete) {
-      setTimeout(() => {
-        clearTimeout(timeOut);
+      callbackTimeout = setTimeout(() => {
+        setProgress(100);
+        clearTimeout(progressTimeout);
       }, 200);
       callOnComplete();
     }
+    return () => clearTimeout(callbackTimeout);
   }, [isComplete]);
 
   useEffect(() => {
@@ -44,10 +46,10 @@ const ScrollProgress = ({
         callOnComplete();
         return;
       }
-      timeOut = setTimeout(increaseProgress, counter);
+      progressTimeout = setTimeout(increaseProgress, counter);
     };
-    timeOut = setTimeout(increaseProgress, counter);
-    return () => clearTimeout(timeOut);
+    progressTimeout = setTimeout(increaseProgress, counter);
+    return () => clearTimeout(progressTimeout);
   }, []);
 
   return (

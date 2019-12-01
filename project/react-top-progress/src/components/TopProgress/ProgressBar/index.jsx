@@ -3,6 +3,8 @@
 import './styles.css';
 import React, { useEffect, useState } from 'react';
 
+let intervalRef = null;
+
 const ProgressBar = ({
   containerStyles,
   progressLevelStyles,
@@ -30,13 +32,14 @@ const ProgressBar = ({
 
   useEffect(() => {
     if (isGradient && animateGradient) {
-      setInterval(() => {
+      intervalRef = setInterval(() => {
         colors = [colors.pop(), ...colors];
         setColors();
       }, 80);
     } else {
       setColors();
     }
+    return () => clearInterval(intervalRef);
   }, [isGradient]);
 
   return (

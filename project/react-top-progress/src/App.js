@@ -36,6 +36,7 @@ function App() {
             isGradient={isGradient}
             smooth={isSmooth}
             animateGradient={animateGradient}
+            gradientColors={[color1, color2, color3, color3, color5]}
           />
         )}
         <div

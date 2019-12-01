@@ -23,6 +23,7 @@ const ScrollProgress = ({
   useEffect(() => {
     setProgress(getScrollPercentage());
     window.addEventListener('scroll', handleWindowScroll);
+    return () => window.removeEventListener('scroll', handleWindowScroll);
   }, []);
 
   return (
