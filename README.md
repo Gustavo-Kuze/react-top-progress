@@ -22,8 +22,10 @@ Após o import, você pode utilizar os componentes dessa forma:
 | containerStyles | undefined | object | Define estilos personalizados para o plano de fundo da barra |
 | progressLevelStyles | undefined | object | Define estilos personalizados para o nível de progresso da barra |
 | progress | 0 | number | Define a porcentagem atual da barra. Surtirá efeito apenas no componente base: TopProgress |
-| isRainbow | false | Boolean | Define se as animações de arco-íris no nível de progresso devem ser ativadas |
+| isGradient | false | Boolean | Define se o gradiente deve ser aplicado ao nível de progresso |
 | smooth | false | Boolean | Define se a transição entre os níveis de progresso da barra devem ser suaves |
+| animateGradient | true | Boolean | Define se o gradiente deve ser animado |
+| gradientColors | array | ['red', 'yellow', 'green', 'blue', 'purple'] | Definição das cores que serão aplicadas ao gradiente do nível de progresso. **NOTA**: Esse array precisa ter um tamanho (length) igual a 5, do contrário o gradiente não será aplicado! |
 
 ## FakeProgress Props
 | Nome        | Valor Padrão  | Tipo  | Detalhes  |
