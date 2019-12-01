@@ -6,7 +6,7 @@ const ProgressBar = ({
   containerStyles,
   progressLevelStyles,
   progress = 0,
-  isUnicorn,
+  isRainbow,
 }) => {
   const [color1, setColor1] = useState();
   const [color2, setColor2] = useState();
@@ -17,7 +17,7 @@ const ProgressBar = ({
   let colors = ['red', 'yellow', 'green', 'blue', 'purple'];
 
   useEffect(() => {
-    if (isUnicorn) {
+    if (isRainbow) {
       setInterval(() => {
         colors = [colors.pop(), ...colors];
         setColor1(colors[0]);

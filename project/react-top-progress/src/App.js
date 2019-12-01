@@ -4,8 +4,8 @@ import { ScrollProgress, FakeProgress } from './components/TopProgress';
 
 function App() {
   const [isFinished, setIsFinished] = useState(false);
-  const [isFake, setIsFake] = useState(false);
-  const [isUnicorn, setIsUnicorn] = useState(false);
+  const [isFake, setIsFake] = useState(true);
+  const [isRainbow, setIsRainbow] = useState(false);
 
   return (
     <div className="App">
@@ -15,14 +15,14 @@ function App() {
           <FakeProgress
             isComplete={isFinished}
             onComplete={() => console.log('completado')}
-            isUnicorn={isUnicorn}
+            isRainbow={isRainbow}
             pauseUntillComplete
           />
         ) : (
           <ScrollProgress
             containerStyles={{ backgroundColor: '#444' }}
             progressLevelStyles={{ backgroundColor: 'orange' }}
-            isUnicorn={isUnicorn}
+            isRainbow={isRainbow}
           />
         )}
 
@@ -30,8 +30,8 @@ function App() {
           <input
             id="unicorn"
             type="checkbox"
-            checked={isUnicorn}
-            onChange={e => setIsUnicorn(e.target.checked)}
+            checked={isRainbow}
+            onChange={e => setIsRainbow(e.target.checked)}
           />
           Arco-íris
         </label>
