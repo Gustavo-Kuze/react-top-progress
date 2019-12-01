@@ -9,6 +9,7 @@ const ProgressBar = ({
   progress = 0,
   isRainbow,
   smooth,
+  rainbowColors = ['red', 'yellow', 'green', 'blue', 'purple'],
 }) => {
   const [color1, setColor1] = useState();
   const [color2, setColor2] = useState();
@@ -16,7 +17,7 @@ const ProgressBar = ({
   const [color4, setColor4] = useState();
   const [color5, setColor5] = useState();
 
-  let colors = ['red', 'yellow', 'green', 'blue', 'purple'];
+  let colors = rainbowColors;
 
   useEffect(() => {
     if (isRainbow) {

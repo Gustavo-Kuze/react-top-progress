@@ -18,6 +18,13 @@ function App() {
             isRainbow={isRainbow}
             pauseUntillComplete
             smooth
+            rainbowColors={[
+              '#90caf9',
+              '#ba68c8',
+              '#039be5',
+              '#9c27b0',
+              '#01579b',
+            ]}
           />
         ) : (
           <ScrollProgress

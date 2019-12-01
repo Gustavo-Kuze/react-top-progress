@@ -12,6 +12,7 @@ const ScrollProgress = ({
   isRainbow,
   pauseUntillComplete,
   smooth,
+  rainbowColors,
 }) => {
   let [progress, setProgress] = useState(0);
 
@@ -55,6 +56,7 @@ const ScrollProgress = ({
       containerStyles={containerStyles}
       isRainbow={isRainbow}
       smooth={smooth}
+      rainbowColors={rainbowColors}
     />
   );
 };
