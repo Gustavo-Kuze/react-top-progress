@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import { HuePicker } from 'react-color';
 import { ScrollProgress, FakeProgress } from './components/TopProgress';
 
 function App() {
@@ -8,6 +9,11 @@ function App() {
   const [isGradient, setIsGradient] = useState(false);
   const [isSmooth, setIsSmooth] = useState(true);
   const [animateGradient, setAnimateGradient] = useState(true);
+  const [color1, setColor1] = useState('#90caf9');
+  const [color2, setColor2] = useState('#ba68c8');
+  const [color3, setColor3] = useState('#039be5');
+  const [color4, setColor4] = useState('#9c27b0');
+  const [color5, setColor5] = useState('#01579b');
 
   return (
     <div className="App">
@@ -20,13 +26,7 @@ function App() {
             isGradient={isGradient}
             pauseUntillComplete
             smooth={isSmooth}
-            gradientColors={[
-              '#90caf9',
-              '#ba68c8',
-              '#039be5',
-              '#9c27b0',
-              '#01579b',
-            ]}
+            gradientColors={[color1, color2, color3, color3, color5]}
             animateGradient={animateGradient}
           />
         ) : (
@@ -38,7 +38,6 @@ function App() {
             animateGradient={animateGradient}
           />
         )}
-
         <div
           style={{
             margin: '15px',
@@ -75,6 +74,30 @@ function App() {
             animateGradient
           </label>
         </div>
+        <HuePicker
+          color={color1}
+          onChangeComplete={color => setColor1(color.hex)}
+        />
+        <br />
+        <HuePicker
+          color={color2}
+          onChangeComplete={color => setColor2(color.hex)}
+        />
+        <br />
+        <HuePicker
+          color={color3}
+          onChangeComplete={color => setColor3(color.hex)}
+        />
+        <br />
+        <HuePicker
+          color={color4}
+          onChangeComplete={color => setColor4(color.hex)}
+        />
+        <br />
+        <HuePicker
+          color={color5}
+          onChangeComplete={color => setColor5(color.hex)}
+        />
 
         <div
           style={{
