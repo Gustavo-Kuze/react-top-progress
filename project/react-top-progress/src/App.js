@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
 import { HuePicker } from 'react-color';
-import { ScrollProgress, FakeProgress } from './components/TopProgress';
+import TopProgress, {
+  ScrollProgress,
+  FakeProgress,
+} from './components/TopProgress';
 
 function App() {
   const [isFinished, setIsFinished] = useState(false);
-  const [isFake, setIsFake] = useState(true);
+  const [selectedComponent, setSelectedComponent] = useState('fake');
   const [isGradient, setIsGradient] = useState(false);
   const [isSmooth, setIsSmooth] = useState(true);
   const [animateGradient, setAnimateGradient] = useState(true);
@@ -15,12 +18,14 @@ function App() {
   const [color3, setColor3] = useState('#039be5');
   const [color4, setColor4] = useState('#9c27b0');
   const [color5, setColor5] = useState('#01579b');
+  const [progressLevel, setProgressLevel] = useState(0);
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>ReactTopProgress</h1>
-        {isFake ? (
+
+        {selectedComponent === 'fake' && (
           <FakeProgress
             isComplete={isFinished}
             onComplete={() => console.log('onComplete callback!')}
@@ -30,7 +35,8 @@ function App() {
             gradientColors={[color1, color2, color3, color3, color5]}
             animateGradient={animateGradient}
           />
-        ) : (
+        )}
+        {selectedComponent === 'scroll' && (
           <ScrollProgress
             containerStyles={{ backgroundColor: '#444' }}
             progressLevelStyles={{ backgroundColor: 'orange' }}
@@ -40,6 +46,18 @@ function App() {
             gradientColors={[color1, color2, color3, color3, color5]}
           />
         )}
+        {selectedComponent === 'progress' && (
+          <TopProgress
+            containerStyles={{ backgroundColor: '#444' }}
+            progressLevelStyles={{ backgroundColor: 'orange' }}
+            isGradient={isGradient}
+            smooth={isSmooth}
+            animateGradient={animateGradient}
+            gradientColors={[color1, color2, color3, color3, color5]}
+            progress={progressLevel}
+          />
+        )}
+
         <div
           style={{
             margin: '15px',
@@ -84,6 +102,16 @@ function App() {
             />
             pauseUntillComplete
           </label>
+          <label htmlFor="progressLevel">
+            Progresso:
+            <input
+              id="progressLevel"
+              type="number"
+              checked={progressLevel}
+              onChange={e => setProgressLevel(e.target.value)}
+              style={{ margin: '5px' }}
+            />
+          </label>
         </div>
         <HuePicker
           color={color1}
@@ -122,8 +150,8 @@ function App() {
             <input
               id="fake"
               type="radio"
-              checked={isFake}
-              onClick={() => setIsFake(true)}
+              checked={selectedComponent === 'fake'}
+              onClick={() => setSelectedComponent('fake')}
             />
             FakeProgress component
           </label>
@@ -131,13 +159,25 @@ function App() {
             <input
               id="scroll"
               type="radio"
-              checked={!isFake}
+              checked={selectedComponent === 'scroll'}
               onClick={() => {
-                setIsFake(false);
+                setSelectedComponent('scroll');
                 setIsFinished(false);
               }}
             />
             ScrollProgress component
+          </label>
+          <label htmlFor="progress">
+            <input
+              id="progress"
+              type="radio"
+              checked={selectedComponent === 'progress'}
+              onClick={() => {
+                setSelectedComponent('progress');
+                setIsFinished(false);
+              }}
+            />
+            Progress component
           </label>
         </div>
         <button
