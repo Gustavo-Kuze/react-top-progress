@@ -4,9 +4,9 @@ import ProgressBar from '../ProgressBar';
 const ScrollProgress = ({
   progressLevelStyles,
   containerStyles,
-  isRainbow,
+  isGradient,
   smooth,
-  rainbowColors,
+  gradientColors,
 }) => {
   const getScrollPercentage = () => {
     const scrollLength = document.body.scrollHeight - window.innerHeight;
@@ -29,9 +29,9 @@ const ScrollProgress = ({
       progress={progress}
       progressLevelStyles={progressLevelStyles}
       containerStyles={containerStyles}
-      isRainbow={isRainbow}
+      isGradient={isGradient}
       smooth={smooth}
-      rainbowColors={rainbowColors}
+      gradientColors={gradientColors}
     />
   );
 };

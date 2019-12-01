@@ -5,7 +5,7 @@ import { ScrollProgress, FakeProgress } from './components/TopProgress';
 function App() {
   const [isFinished, setIsFinished] = useState(false);
   const [isFake, setIsFake] = useState(true);
-  const [isRainbow, setIsRainbow] = useState(false);
+  const [isGradient, setIsGradient] = useState(false);
 
   return (
     <div className="App">
@@ -15,10 +15,10 @@ function App() {
           <FakeProgress
             isComplete={isFinished}
             onComplete={() => console.log('completado')}
-            isRainbow={isRainbow}
+            isGradient={isGradient}
             pauseUntillComplete
             smooth
-            rainbowColors={[
+            gradientColors={[
               '#90caf9',
               '#ba68c8',
               '#039be5',
@@ -30,7 +30,7 @@ function App() {
           <ScrollProgress
             containerStyles={{ backgroundColor: '#444' }}
             progressLevelStyles={{ backgroundColor: 'orange' }}
-            isRainbow={isRainbow}
+            isGradient={isGradient}
           />
         )}
 
@@ -38,8 +38,8 @@ function App() {
           <input
             id="unicorn"
             type="checkbox"
-            checked={isRainbow}
-            onChange={e => setIsRainbow(e.target.checked)}
+            checked={isGradient}
+            onChange={e => setIsGradient(e.target.checked)}
           />
           Arco-íris
         </label>

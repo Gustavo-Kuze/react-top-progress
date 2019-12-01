@@ -7,9 +7,9 @@ const ProgressBar = ({
   containerStyles,
   progressLevelStyles,
   progress = 0,
-  isRainbow,
+  isGradient,
   smooth,
-  rainbowColors = ['red', 'yellow', 'green', 'blue', 'purple'],
+  gradientColors = ['red', 'yellow', 'green', 'blue', 'purple'],
 }) => {
   const [color1, setColor1] = useState();
   const [color2, setColor2] = useState();
@@ -17,10 +17,10 @@ const ProgressBar = ({
   const [color4, setColor4] = useState();
   const [color5, setColor5] = useState();
 
-  let colors = rainbowColors;
+  let colors = gradientColors;
 
   useEffect(() => {
-    if (isRainbow) {
+    if (isGradient) {
       setInterval(() => {
         colors = [colors.pop(), ...colors];
         setColor1(colors[0]);
@@ -30,7 +30,7 @@ const ProgressBar = ({
         setColor5(colors[4]);
       }, 80);
     }
-  }, [isRainbow]);
+  }, [isGradient]);
 
   return (
     <div className="progress-container" style={containerStyles}>
@@ -39,7 +39,7 @@ const ProgressBar = ({
         style={{
           ...progressLevelStyles,
           width: `${progress}%`,
-          background: isRainbow
+          background: isGradient
             ? `linear-gradient(to right, ${color1}, ${color2}, ${color3}, ${color4}, ${color5})`
             : progressLevelStyles &&
               (progressLevelStyles.background ||
