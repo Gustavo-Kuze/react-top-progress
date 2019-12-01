@@ -29,7 +29,7 @@ const ProgressBar = ({
         setColor5(colors[4]);
       }, 80);
     }
-  }, []);
+  }, [isRainbow]);
 
   return (
     <div className="progress-container" style={containerStyles}>
@@ -38,7 +38,11 @@ const ProgressBar = ({
         style={{
           ...progressLevelStyles,
           width: `${progress}%`,
-          background: `linear-gradient(to right, ${color1}, ${color2}, ${color3}, ${color4}, ${color5})`,
+          background: isRainbow
+            ? `linear-gradient(to right, ${color1}, ${color2}, ${color3}, ${color4}, ${color5})`
+            : progressLevelStyles &&
+              (progressLevelStyles.background ||
+                progressLevelStyles.backgroundColor),
           transition: smooth ? 'all 400ms ease-out' : '',
         }}
       />
