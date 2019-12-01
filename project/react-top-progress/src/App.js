@@ -6,6 +6,8 @@ function App() {
   const [isFinished, setIsFinished] = useState(false);
   const [isFake, setIsFake] = useState(true);
   const [isGradient, setIsGradient] = useState(false);
+  const [isSmooth, setIsSmooth] = useState(true);
+  const [animateGradient, setAnimateGradient] = useState(true);
 
   return (
     <div className="App">
@@ -14,10 +16,10 @@ function App() {
         {isFake ? (
           <FakeProgress
             isComplete={isFinished}
-            onComplete={() => console.log('completado')}
+            onComplete={() => console.log('onComplete callback!')}
             isGradient={isGradient}
             pauseUntillComplete
-            smooth
+            smooth={isSmooth}
             gradientColors={[
               '#90caf9',
               '#ba68c8',
@@ -25,25 +27,63 @@ function App() {
               '#9c27b0',
               '#01579b',
             ]}
+            animateGradient={animateGradient}
           />
         ) : (
           <ScrollProgress
             containerStyles={{ backgroundColor: '#444' }}
             progressLevelStyles={{ backgroundColor: 'orange' }}
             isGradient={isGradient}
+            smooth={isSmooth}
+            animateGradient={animateGradient}
           />
         )}
 
-        <label htmlFor="unicorn">
-          <input
-            id="unicorn"
-            type="checkbox"
-            checked={isGradient}
-            onChange={e => setIsGradient(e.target.checked)}
-          />
-          Arco-íris
-        </label>
-        <div style={{ margin: '15px' }}>
+        <div
+          style={{
+            margin: '15px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+          }}
+        >
+          <label htmlFor="unicorn">
+            <input
+              id="unicorn"
+              type="checkbox"
+              checked={isGradient}
+              onChange={e => setIsGradient(e.target.checked)}
+            />
+            isGradient
+          </label>
+          <label htmlFor="smooth">
+            <input
+              id="smooth"
+              type="checkbox"
+              checked={isSmooth}
+              onChange={e => setIsSmooth(e.target.checked)}
+            />
+            smooth
+          </label>
+          <label htmlFor="animateGradient">
+            <input
+              id="animateGradient"
+              type="checkbox"
+              checked={animateGradient}
+              onChange={e => setAnimateGradient(e.target.checked)}
+            />
+            animateGradient
+          </label>
+        </div>
+
+        <div
+          style={{
+            margin: '15px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+          }}
+        >
           <label htmlFor="fake">
             <input
               id="fake"
@@ -51,7 +91,7 @@ function App() {
               checked={isFake}
               onClick={() => setIsFake(true)}
             />
-            FakeProgress
+            FakeProgress component
           </label>
           <label htmlFor="scroll">
             <input
@@ -63,7 +103,7 @@ function App() {
                 setIsFinished(false);
               }}
             />
-            ScrollProgress
+            ScrollProgress component
           </label>
         </div>
         <button
@@ -71,8 +111,9 @@ function App() {
           onClick={() => {
             setIsFinished(true);
           }}
+          className="button"
         >
-          Finalizar
+          isComplete (FakeProgress)
         </button>
       </header>
     </div>
