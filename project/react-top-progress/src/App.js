@@ -9,6 +9,7 @@ function App() {
   const [isGradient, setIsGradient] = useState(false);
   const [isSmooth, setIsSmooth] = useState(true);
   const [animateGradient, setAnimateGradient] = useState(true);
+  const [pauseUntillComplete, setPauseUntillComplete] = useState(true);
   const [color1, setColor1] = useState('#90caf9');
   const [color2, setColor2] = useState('#ba68c8');
   const [color3, setColor3] = useState('#039be5');
@@ -24,7 +25,7 @@ function App() {
             isComplete={isFinished}
             onComplete={() => console.log('onComplete callback!')}
             isGradient={isGradient}
-            pauseUntillComplete
+            pauseUntillComplete={pauseUntillComplete}
             smooth={isSmooth}
             gradientColors={[color1, color2, color3, color3, color5]}
             animateGradient={animateGradient}
@@ -73,6 +74,15 @@ function App() {
               onChange={e => setAnimateGradient(e.target.checked)}
             />
             animateGradient
+          </label>
+          <label htmlFor="pauseUntillComplete">
+            <input
+              id="pauseUntillComplete"
+              type="checkbox"
+              checked={pauseUntillComplete}
+              onChange={e => setPauseUntillComplete(e.target.checked)}
+            />
+            pauseUntillComplete
           </label>
         </div>
         <HuePicker
