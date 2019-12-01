@@ -22,7 +22,7 @@ Após o import, você pode utilizar os componentes dessa forma:
 | containerStyles | undefined | object | Define estilos personalizados para o plano de fundo da barra |
 | progressLevelStyles | undefined | object | Define estilos personalizados para o nível de progresso da barra |
 | progress | 0 | number | Define a porcentagem atual da barra. Surtirá efeito apenas no componente base: TopProgress |
-| isUnicorn | false | Boolean | Define se as animações de arco-íris no nível de progresso devem ser ativadas |
+| isRainbow | false | Boolean | Define se as animações de arco-íris no nível de progresso devem ser ativadas |
 
 ## FakeProgress Props
 | Nome        | Valor Padrão  | Tipo  | Detalhes  |
